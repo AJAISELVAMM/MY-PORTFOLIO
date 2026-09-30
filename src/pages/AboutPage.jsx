@@ -13,7 +13,7 @@ import {
   FolderGit2, 
   ChevronRight 
 } from 'lucide-react';
-import { portfolioConfig, PROFILE_IMAGE_URL } from '../config/portfolioConfig';
+import { portfolioConfig, PROFILE_IMAGE_URL, getAssetUrl } from '../config/portfolioConfig';
 import { 
   GitHubBrandIcon, 
   LinkedInBrandIcon, 
@@ -105,7 +105,7 @@ export const AboutPage = () => {
                         e.currentTarget.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='64' fill='%23ede9fe'/%3E%3Cpath d='M64 64a20 20 0 1 0 0-40 20 20 0 0 0 0 40zm0 12c-20 0-38 12-40 28h80c-2-16-20-28-40-28z' fill='%237c3aed'/%3E%3C/svg%3E";
                       } else {
                         e.currentTarget.dataset.fallbackTried = 'primary';
-                        e.currentTarget.src = portfolioConfig.profileImageFallback || "/images/ajai-profile.jpg";
+                        e.currentTarget.src = portfolioConfig.profileImageFallback || getAssetUrl("/images/ajai-profile.jpg");
                       }
                     }}
                   />

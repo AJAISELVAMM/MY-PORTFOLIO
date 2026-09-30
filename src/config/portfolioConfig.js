@@ -15,6 +15,17 @@ const projectUrls = {
   }
 };
 
+// Helper to dynamically prefix asset paths with Vite BASE_URL
+export const getAssetUrl = (path) => {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:')) {
+    return path;
+  }
+  const cleanPath = path.replace(/^\//, '');
+  const baseUrl = import.meta.env.BASE_URL || '/';
+  return `${baseUrl}${cleanPath}`;
+};
+
 const projectsData = [
   {
     id: "crop-management",
@@ -24,9 +35,9 @@ const projectsData = [
     event: "NEXERA 2K26 – TECHNOVA, Coimbatore Institute of Technology",
     description: "Developed a technology-driven solution for dynamic crop management. Designed responsive interfaces for monitoring and managing crop-related information. Contributed to system planning, frontend development, UI/UX design, and feature implementation. Collaborated with team members to develop and present the solution at the technical hackathon.",
     technologies: ["HTML", "CSS", "JavaScript", "UI/UX Design"],
-    image: "/images/crop-management.jpg",
-    fallbackImage: "/images/crop-management.jpg",
-    previewImage: "/images/phoenix-ai-preview.png",
+    image: getAssetUrl("/images/crop-management.jpg"),
+    fallbackImage: getAssetUrl("/images/crop-management.jpg"),
+    previewImage: getAssetUrl("/images/phoenix-ai-preview.png"),
     deployedUrl: projectUrls.cropManagement.deployedUrl,
     sourceCodeUrl: projectUrls.cropManagement.sourceCodeUrl,
     githubUrl: projectUrls.cropManagement.sourceCodeUrl,
@@ -44,7 +55,7 @@ const projectsData = [
       "Hackathon Presentation & Technical Demonstration"
     ],
     gallery: [
-      "/images/crop-management.jpg"
+      getAssetUrl("/images/crop-management.jpg")
     ]
   },
   {
@@ -59,9 +70,9 @@ const projectsData = [
       "PostgreSQL", "Supabase", "Prisma", "Leaflet", 
       "OpenStreetMap", "Python", "AI/ML"
     ],
-    image: "/images/royal-tours.jpg",
-    fallbackImage: "/images/royal-tours.jpg",
-    previewImage: "/images/royal-tours-preview.png",
+    image: getAssetUrl("/images/royal-tours.jpg"),
+    fallbackImage: getAssetUrl("/images/royal-tours.jpg"),
+    previewImage: getAssetUrl("/images/royal-tours-preview.png"),
     deployedUrl: projectUrls.royalTours.deployedUrl,
     sourceCodeUrl: projectUrls.royalTours.sourceCodeUrl,
     githubUrl: projectUrls.royalTours.sourceCodeUrl,
@@ -83,7 +94,7 @@ const projectsData = [
       "SIH Hackathon Presentation & Live Demonstration"
     ],
     gallery: [
-      "/images/royal-tours.jpg"
+      getAssetUrl("/images/royal-tours.jpg")
     ]
   }
 ];
@@ -103,7 +114,7 @@ export const portfolioConfig = {
   
   // Profile Image URL Configuration (Google Drive file ID: 18QXtTXIrRpZmNmpm4co4GploxeEjAdAk)
   profileImage: "https://lh3.googleusercontent.com/d/18QXtTXIrRpZmNmpm4co4GploxeEjAdAk",
-  profileImageFallback: "/images/ajai-profile.jpg",
+  profileImageFallback: getAssetUrl("/images/ajai-profile.jpg"),
 
   // Resume URL: Google Drive Share Link
   resume: "https://drive.google.com/file/d/1UMfSJcl7LYIGRlO318fnP8-BQK1Qg9Hz/view?usp=sharing",
